@@ -1,0 +1,7 @@
+cmulookup <databasefile> <keyfile> [ ... ]
+
+Options:
+-o <file> : direct output to <file>
+-v        : verbosely list activity
+-1        : when a list of results are available, print only the first
+-h        : print this help
