@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "THERE" | ./cmulookup cmudict-0.7b

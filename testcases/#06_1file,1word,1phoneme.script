@@ -1,0 +1,2 @@
+#!/bin/sh
+./cmulookup cmudict-0.7b input/1word.txt
