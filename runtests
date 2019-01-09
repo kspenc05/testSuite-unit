@@ -1,0 +1,54 @@
+#!/bin/sh
+
+##
+## Shell script based regression test harness.  Runs all of the programs
+## found in subdirectory "testsuite" that have the extension ".script"
+##
+## Each *.script program should have a companion *.expected containing
+## its expected output
+##
+## Temporary output files will be placed in the directory "output"
+##
+## If run with the option "-v" verbose output will be produced.
+##
+## No handling of exit status comparison is performed by this test suite.
+##
+
+make
+if [ ! -d output ]
+then
+	mkdir output
+fi
+
+##
+## run each test case, comparing the result against its expected data set
+##
+for TEST in testcases/*.script
+do
+	## calculate new names for created output and expected output files
+	SCRIPT=`basename ${TEST}`
+	EXPECTED=`echo ${SCRIPT} | sed -e 's/script$/expected/'`
+	OUTPUT=`echo ${SCRIPT} | sed -e 's/script$/output/'`
+
+    echo -e "**************************"
+	echo -e "RUNNING test: ${SCRIPT}\n"
+	echo -e "EXPECTED:"
+	cat testcases/${EXPECTED} 
+
+	## run test, redirecting stdout to file, but stderr to /dev/null
+	sh ${TEST} > output/${OUTPUT} 2> /dev/null
+
+	if
+		cmp -s output/${OUTPUT} testcases/${EXPECTED}
+	then
+		echo -e "\n+PASS : ${SCRIPT}"
+	else
+		echo -e "\n-FAIL : ${SCRIPT} - does not match expected output"
+	fi
+	
+	echo -e "\nRECEIVED:"
+    cat output/${OUTPUT}
+	
+	echo -e "************************\n\n"
+done
+bash testcases/#15_wrong_CMU,0words,0phonemes.sh

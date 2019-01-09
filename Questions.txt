@@ -1,0 +1,20 @@
+
+Question #1. 3 variables. The number of input files,
+             number of words to look up, and
+             the number of possible phoneme sequences.
+
+Question #2: the partitions of input files would be 0 - 1, 1 - positive infinity.
+             the partitions of the number of words to look up,
+             would be: 0 - 1, 1 - positive infinity.
+             the partitions for the number of phoneme sequences would be 0 - 1,
+             and 1 - positive infinity.
+
+Question #3: The normal values for each variable would be:
+             input files = 1.
+             number of words to look up = 1<->149,999
+             number of phoneme sequences = 1<->positive infinity
+                 
+Question #4: The robust values for each variable would be: 
+             number of input files = 0, 2, 3
+             number of words to look up = 0, 2.
+             number of phoneme sequences = 0, 2.
